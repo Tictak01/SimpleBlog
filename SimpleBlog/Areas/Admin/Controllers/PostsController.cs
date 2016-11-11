@@ -4,16 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SimpleBlog.Controllers
+namespace SimpleBlog.Areas.Admin.Controllers
 {
     public class PostsController : Controller
     {
-        //Controller like a class, action as a method
-
+        // GET: Admin/Posts
         public ActionResult Index()
         {
-            return Content("Bananabutt");
+            return Content("ADMIN POSTS!");
         }
-
     }
 }
