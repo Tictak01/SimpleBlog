@@ -1,0 +1,28 @@
+﻿
+@{
+    //Using this removed the need for header and !DOCTYPE stuff, since it already has it in the _Layout file
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div> 
+        <h1>Posts Index</h1>
+
+        @{  
+        //Use @ symbol for C#
+        //Tags tell razor it's html
+        // @: works for single lines to treat as html
+        }
+
+        <!--These methods speak to the RouteConfig.cs file for link information-->
+        <p>
+           
+            <a href="@Url.RouteUrl("login")">Click here</a> to login! <!--Don't use '/login' for the link!-->
+        </p>
+
+        <p>
+            @Html.RouteLink("Click here", "login") to login! <!--Generates the href-->
+        </p>
+         
+
+    </div>
