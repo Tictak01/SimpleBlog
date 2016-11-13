@@ -1,9 +1,11 @@
 ﻿
 @{
     //Using this removed the need for header and !DOCTYPE stuff, since it already has it in the _Layout file
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+    @{
+        ViewBag.Title = "Posts"; //Sets the title in _Layout
+    }
 
     <div> 
         <h1>Posts Index</h1>
