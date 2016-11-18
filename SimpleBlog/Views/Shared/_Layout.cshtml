@@ -13,7 +13,7 @@
 <body>
     <header>
         <h1>
-            <a href="@Url.RouteUrl("home")">OMEGA VIRUS</a>
+            <a href="@Url.RouteUrl("home")">Simutank</a>
         </h1>
         <a href="@Url.RouteUrl("login")">Login</a>
 
@@ -21,6 +21,15 @@
 
     <!--Insert View Here-->
     @RenderBody()
+
+    
+    <footer>
+        &copy; @DateTime.UtcNow.Year - Iron Monkey Inc.
+    </footer>
+
+    <!--Always put script tags at the end of the body-->
+    <!--For rendering scripts at the end-->
+    @RenderSection("Scripts", false)
 
 </body>
 </html>

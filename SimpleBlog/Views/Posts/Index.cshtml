@@ -25,6 +25,14 @@
         <p>
             @Html.RouteLink("Click here", "login") to login! <!--Generates the href-->
         </p>
-         
+   
+        <!--Throws itself to the _Layout RenderSection called 'Scripts' at the end of the layout-->      
+@section Scripts
+        {
+        <script>
+            alert("DEUS VULT");
+        </script>
+        }
+        
 
     </div>
