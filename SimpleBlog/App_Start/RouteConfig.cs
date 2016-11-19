@@ -12,7 +12,8 @@ namespace SimpleBlog
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            var namespaces = new[] { typeof (PostsController).Namespace};
+            //Keeps the Areas controller with similar names under control
+            var namespaces = new[] { typeof (PostsController).Namespace}; //Doing something with the namespaces and turning it into a string.  Honestly, this needs review
 
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
