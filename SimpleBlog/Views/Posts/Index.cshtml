@@ -1,4 +1,5 @@
-﻿
+﻿<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
 @{
     //Using this removed the need for header and !DOCTYPE stuff, since it already has it in the _Layout file
     //Layout = "~/Views/Shared/_Layout.cshtml";
@@ -36,3 +37,44 @@
         
 
     </div>
+@*Start of Alert code.  Just the layout.  No logic here.*@
+@{
+    var items = new List<SelectListItem>{
+        new SelectListItem {Value = "1", Text = "Blue"},
+        new SelectListItem {Value = "2", Text = "Red"},
+        new SelectListItem {Value = "3", Text = "Green", Selected = true},
+        new SelectListItem {Value = "4", Text = "Yellow", Selected = true},
+        new SelectListItem {Value = "5", Text = "Black"}
+    };
+}
+
+
+<div class="container">
+
+    <h2>Alert Form</h2>
+    <div class="row">
+        @*First Row*@
+        <div class="col-sm">
+            <p>Location: @Html.DropDownList("CategoryId", items)</p>
+            <p>Client: @Html.DropDownList("CategoryId", items)</p>
+            <p>System: @Html.DropDownList("CategoryId", items)</p>
+            <p></p>
+            <p>Severity Level: @Html.DropDownList("CategoryId", items)</p>
+        </div>
+        @*Second Row*@
+        <div class="col-sm">
+            <p>@Html.RadioButton("securityAlert",0,false) Security Alert</p>
+            <p>@Html.RadioButton("securityAlert", 1, false) Planned Maintenance</p>
+            <p>@Html.RadioButton("securityAlert", 2, false) Facilities Alert</p>
+            <p>@Html.RadioButton("securityAlert", 3, false) IT Alert</p>
+        </div>
+        @*Second Row*@
+        <div class="col-sm">
+        </div>
+        @*Second Row*@
+        <div class="col-sm">
+        </div>           
+    </div>
+
+</div>
+
