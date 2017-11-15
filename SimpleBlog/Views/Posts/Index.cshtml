@@ -4,39 +4,40 @@
     //Using this removed the need for header and !DOCTYPE stuff, since it already has it in the _Layout file
     //Layout = "~/Views/Shared/_Layout.cshtml";
 }
-    @{
-        ViewBag.Title = "Posts"; //Sets the title in _Layout
-    }
-
-    <div> 
-        <h1>Posts Index</h1>
-
-        @{  
-        //Use @ symbol for C#
-        //Tags tell razor it's html
-        // @: works for single lines to treat as html
+@*
+        @{
+            ViewBag.Title = "Posts"; //Sets the title in _Layout
         }
 
-        <!--These methods speak to the RouteConfig.cs file for link information-->
-        <p>
-           
-            <a href="@Url.RouteUrl("login")">Click here</a> to login! <!--Don't use '/login' for the link!-->
-        </p>
+        <div>
+            <h1>Posts Index</h1>
 
-        <p>
-            @Html.RouteLink("Click here", "login") to login! <!--Generates the href-->
-        </p>
-   
-        <!--Throws itself to the _Layout RenderSection called 'Scripts' at the end of the layout-->      
-@section Scripts
-        {
-        <script>
-            //alert("DEUS VULT");
-        </script>
-        }
-        
+            @{
+            //Use @ symbol for C#
+            //Tags tell razor it's html
+            // @: works for single lines to treat as html
+            }
 
-    </div>
+            <!--These methods speak to the RouteConfig.cs file for link information-->
+            <p>
+
+                <a href="@Url.RouteUrl("login")">Click here</a> to login! <!--Don't use '/login' for the link!-->
+            </p>
+
+            <p>
+                @Html.RouteLink("Click here", "login") to login! <!--Generates the href-->
+            </p>
+
+            <!--Throws itself to the _Layout RenderSection called 'Scripts' at the end of the layout-->
+    @section Scripts
+            {
+            <script>
+                //alert("DEUS VULT");
+            </script>
+            }
+
+
+        </div>*@ 
 @*Start of Alert code.  Just the layout.  No logic here.*@
 @{
     var items = new List<SelectListItem>{
@@ -46,35 +47,138 @@
         new SelectListItem {Value = "4", Text = "Yellow", Selected = true},
         new SelectListItem {Value = "5", Text = "Black"}
     };
+
+    var emails = new List<SelectListItem>{
+        new SelectListItem {Value = "1", Text = "asu-it@educationatwork.org", Selected = true},
+    
+    };
 }
 
-
 <div class="container">
-
-    <h2>Alert Form</h2>
+    @*Row One*@
     <div class="row">
-        @*First Row*@
-        <div class="col-sm">
-            <p>Location: @Html.DropDownList("CategoryId", items)</p>
-            <p>Client: @Html.DropDownList("CategoryId", items)</p>
-            <p>System: @Html.DropDownList("CategoryId", items)</p>
-            <p></p>
-            <p>Severity Level: @Html.DropDownList("CategoryId", items)</p>
+        @*First Column*@
+        <div class="col-sm-3">
+            <h2>Alert Form</h2>
         </div>
-        @*Second Row*@
-        <div class="col-sm">
-            <p>@Html.RadioButton("securityAlert",0,false) Security Alert</p>
+        @*Third Column?*@
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-sm-3">
+            <h5>Recipients</h5>
+        </div>
+    </div>
+
+    @*Row Two*@
+    <div class="row" style="padding-bottom:50px">
+        @*First Column*@
+        <div class=" col-sm-3">
+        <p>Location: @Html.DropDownList("CategoryId", items)</p>
+        <p>Client: @Html.DropDownList("CategoryId", items)</p>
+        <p>System: @Html.DropDownList("CategoryId", items)</p>
+        <p></p>
+        <p>Severity Level: @Html.DropDownList("CategoryId", items)</p>
+    </div>
+        @*Second Column*@
+        <div class="col-sm-3">
+            <p>@Html.RadioButton("securityAlert", 0, false) Security Alert</p>
             <p>@Html.RadioButton("securityAlert", 1, false) Planned Maintenance</p>
             <p>@Html.RadioButton("securityAlert", 2, false) Facilities Alert</p>
             <p>@Html.RadioButton("securityAlert", 3, false) IT Alert</p>
         </div>
-        @*Second Row*@
-        <div class="col-sm">
+        @*Third Column*@
+        <div class="col-sm-3">
+
+            <p>@Html.CheckBox("Leadership") Leadership</p>
+            <p>@Html.CheckBox("Infosec") InfoSec/Network</p>
+            <p>@Html.CheckBox("WFM") WFM</p>
+            <p>@Html.CheckBox("CIO") CIO</p>
         </div>
-        @*Second Row*@
-        <div class="col-sm">
-        </div>           
+        @*Fourth Column*@
+        <div class="col-sm-3">
+            @Html.ListBox("mylist", emails)
+            <div class="row">
+                <div class="col-sm-2">
+                    <button type="button">Add</button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button">Edit</button>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button">Remove</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-</div>
 
+
+
+
+    @*Row Three*@
+    <div class="row">
+        @*First Column*@
+        <div class="col-sm-3">
+            @*Sub-Columns*@
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Alert Summary:</p>
+                    <p>Information Update:</p>
+                    <p>Start Date/Time:</p>
+                    <p>End Date/Time:</p>
+                    <p># of Staff Effected:</p>
+                    <p style="margin-bottom:30px">Root Cause:</p>
+                    <p style="margin-bottom:50px">Ticket #:</p>
+                    <p>Status:</p>
+                </div>
+                <div class="col-sm-3">
+                    <p>@Html.TextArea("alertSummary")</p>
+                    <p>@Html.TextArea("infoUpdate")</p>
+                    <p>
+                        <input type="datetime-local" name="startTime">
+                    </p>
+                    <p>
+                        <input type="datetime-local" name="endTime">
+                    </p>
+                    <p>@Html.TextArea("numStaffEffected")</p>
+                    <p>@Html.TextArea("rootCause")</p>
+                    <p>@Html.TextArea("ticketNum")</p>
+                    <p>@Html.DropDownList("StatusId", items)</p>
+                </div>
+            </div>
+        </div>
+
+        @*Second Column*@
+        <div class="col-sm-3">
+
+        </div>
+
+        @*Third Column*@
+        <div class="col-sm-3">
+            <h5>Sender Email</h5>
+            <p>@Html.CheckBox("defaultEmailCheckBox") Use Default Alert Email</p>
+
+            @*Sub Columns*@
+            <div class="row">
+                <div class="col-sm-3">
+                    <p style="margin-bottom:30px">Email:</p>
+                    <p style="margin-bottom:20px">Password:</p>
+                    <p style="margin-bottom:34px">>Sender:</p>
+                    <button type="button">Load Alert</button>
+                    <p>@Html.TextArea("Alerts", "", 5, 40, "")</p>
+                    <button type="button" style="width:200px">Send Alert</button>
+                </div>
+                <div class="col-sm-3">
+                    <p>@Html.TextArea("fromEmail","",1,20,"")</p>
+                    <p>@Html.TextArea("emailPassword", "", 1, 20, "")</p>
+                    <p>@Html.TextArea("sender","",1,20,"")</p>
+                    <button type="button">Clear All</button>
+                </div>
+            </div>
+         </div>
+
+        </div>
+
+
+</div>
